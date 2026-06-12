@@ -108,19 +108,6 @@ body {
   100% { box-shadow: 0 0 8px #B026FF; }
 }
 
-@keyframes likePopA {
-  0%   { transform: scale(1); }
-  50%  { transform: scale(1.4); }
-  100% { transform: scale(1); }
-}
-
-@keyframes likePopB {
-  0%   { transform: scale(1); }
-  30%  { transform: scale(0); }
-  60%  { transform: scale(1.3); }
-  100% { transform: scale(1); }
-}
-
 @keyframes fadeOut {
   0% { opacity: 1; }
   100% { opacity: 0; }
@@ -136,9 +123,19 @@ body {
   100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
 }
 
-@keyframes doubleTapFlash {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(2.0); opacity: 0; }
+@keyframes commentSlideIn {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-commentSlideIn {
+  animation: commentSlideIn 200ms ease-out forwards;
 }
 
 .animate-spring-pop {
@@ -149,27 +146,119 @@ body {
   animation: playPulse 0.6s ease-out forwards;
 }
 
-.animate-double-tap-flash {
-  animation: doubleTapFlash 0.6s ease-out forwards;
+@keyframes pulsePop {
+  0%   { transform: scale(1); }
+  30%  { transform: scale(0.8); }
+  60%  { transform: scale(1.4); }
+  80%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
 }
 
-@keyframes heartBurstAnim {
-  0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
-  100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(1.5); opacity: 0; }
+@keyframes particleFly {
+  0% {
+    transform: translate(0,0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
 }
 
-.like-pop-a {
-  animation: likePopA 0.3s ease-in-out;
+@keyframes energyRing {
+  0% {
+    transform: scale(0.5);
+    opacity: 0.8;
+    border: 2px solid #B026FF;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+    border: 2px solid #B026FF;
+  }
 }
 
-.like-pop-b {
-  animation: likePopB 0.4s ease-in-out;
+@keyframes countUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
-.heart-particle {
+@keyframes countDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes bigFlash {
+  0% {
+    transform: scale(0) rotate(-15deg);
+    opacity: 0;
+  }
+  30% {
+    transform: scale(1.2) rotate(-15deg);
+    opacity: 1;
+  }
+  70% {
+    transform: scale(1.0) rotate(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5) rotate(-15deg);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-pop {
+  animation: pulsePop 400ms ease-in-out;
+}
+
+.pulse-particle {
   position: absolute;
   top: 50%;
   left: 50%;
   pointer-events: none;
-  animation: heartBurstAnim 0.6s ease-out forwards;
+  animation: particleFly 500ms ease-out forwards;
+}
+
+.energy-ring {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: energyRing 600ms ease-out forwards;
+}
+
+.count-up {
+  animation: countUp 300ms ease-in-out forwards;
+}
+
+.count-down {
+  animation: countDown 300ms ease-in-out forwards;
 }

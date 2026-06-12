@@ -338,6 +338,7 @@ export const mockSparks = [
   }
 ];
 
+const pulseCounts = [2400, 1800, 5600, 890, 12400, 3100, 4200, 150, 89000, 450];
 export const mockReels = Array.from({ length: 10 }).map((_, i) => ({
   id: `reel_${i + 1}`,
   user: mockUsers[i % mockUsers.length].displayName,
@@ -346,7 +347,7 @@ export const mockReels = Array.from({ length: 10 }).map((_, i) => ({
   videoImageHover: `https://picsum.photos/400/700?random=${i + 200}`,
   caption: `Watching the sunset code run! 🌇🚀 #coding #reels #${i}`,
   audio: `Original Audio - ${mockUsers[i % mockUsers.length].displayName}`,
-  likes: `${Math.floor(Math.random() * 100)}K`,
+  pulseCount: pulseCounts[i % pulseCounts.length],
   comments: `${Math.floor(Math.random() * 5)}K`,
   shares: `${Math.floor(Math.random() * 10)}K`,
   reactions: {

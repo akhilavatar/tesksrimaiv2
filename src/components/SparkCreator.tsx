@@ -249,7 +249,7 @@ export function SparkCreator({ isOpen, onClose, onPost }: SparkCreatorProps) {
   };
 
   const filteredMentions = suggestionType === 'mention' 
-    ? mockUsers.filter(u => u.username?.toLowerCase().includes(suggestionQuery) || (u.fullName || u.displayName || '').toLowerCase().includes(suggestionQuery)).slice(0, 5)
+    ? mockUsers.filter(u => u.username?.toLowerCase().includes(suggestionQuery) || (u.displayName || '').toLowerCase().includes(suggestionQuery)).slice(0, 5)
     : [];
 
   const filteredHashtags = suggestionType === 'hashtag'
@@ -346,14 +346,14 @@ export function SparkCreator({ isOpen, onClose, onPost }: SparkCreatorProps) {
                     }}
                     className="w-full flex items-center gap-3 p-3 text-left hover:bg-white/10 transition-colors border-b border-white/5 active:bg-white/20"
                   >
-                    <img src={user.avatar || user.avatarUrl} alt={user.fullName || user.displayName} className="w-10 h-10 rounded-full border border-white/20" />
+                    <img src={user.avatar} alt={user.displayName} className="w-10 h-10 rounded-full border border-white/20" />
                     <div className="flex flex-col">
                       <span className="text-white font-bold leading-tight flex items-center gap-1">
                         @{user.username}
                         {user.isVerified && <span className="text-[10px]">✨</span>}
                       </span>
                       <span className="text-white/50 text-[11px] font-medium mt-0.5">
-                        {user.fullName || user.displayName} • {(user.followers || 0).toLocaleString()} followers
+                        {user.displayName} • {(user.followers || 0).toLocaleString()} followers
                       </span>
                     </div>
                   </button>
@@ -548,7 +548,7 @@ export function SparkCreator({ isOpen, onClose, onPost }: SparkCreatorProps) {
                  controls={false}
                  onLoadedMetadata={handleVideoLoad}
                  onTimeUpdate={handleTimeUpdate}
-                 onError={(e) => console.log('SparkCreator preview error', e)}
+                 onError={() => console.log('SparkCreator preview error')}
                />
                <div className="absolute top-[80px] right-4 bg-black/60 backdrop-blur-md px-2 py-1 rounded flex items-center border border-white/10 z-10 shadow-lg">
                  <span className="text-[10px] uppercase font-bold text-white tracking-wider">{isVideoMuted ? '🔇 Muted' : '🔊 Audio On'}</span>

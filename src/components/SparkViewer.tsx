@@ -767,7 +767,7 @@ export function SparkViewer({
                             controls={false}
                             loop
                             playsInline
-                            onError={(e) => console.log('Spark video play error', e)}
+                            onError={() => console.log('Spark video play error')}
                           />
                           <button
                             onClick={(e) => {
@@ -1487,7 +1487,7 @@ export function SparkViewer({
                             className="w-full h-full object-cover"
                             muted
                             title="preview"
-                            onError={(e) => console.log('Spark video preview error', e)}
+                            onError={() => console.log('Spark video preview error')}
                           />
                         ) : spark.type === "image" ? (
                           <img
